@@ -1,0 +1,339 @@
+.container-fluid {
+  padding: 0px;
+}
+
+/*body */
+body {
+  color: rgb(56,41,44);
+  background-color: rgb(231,233,220);
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+
+
+/* The sidebar menu */
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: rgb(132,60,61); /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 15px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  color: rgb(231,233,220);
+}
+
+.name {
+  margin: 0;
+  font-size: 14px;
+}
+
+.accountType {
+  font-size: 14px;
+  color: rgb(213,169,106);
+}
+
+.adminInfo {
+  padding: 0px 0px 15px 15px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: black; /**rgb(189,173,148);**/
+ /** border-bottom-color: rgb(231,233,220);**/
+
+}
+
+/* UserImage */
+.image {
+  height: 65px;
+  width: 65px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: rgb(231,233,220);
+}
+
+/* Text beside User image */
+.adminText {
+  padding: 5px 0px 0px 25px;
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 12px 8px 12px 12px;
+  text-decoration: none;
+  font-size: 14px;
+  color: rgb(231,233,220);
+  display: block;
+  transition: 0.3s;
+}
+
+/*Side bar Links top Spacing */
+.links {
+  margin-top: 0px;
+}
+
+/*link Icon */
+.icon {
+  height: 18px;
+  width: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: rgb(56,41,44);
+  background: rgb(231,233,220);
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  font-size: 22px;
+  margin-top: 10px;
+  padding: 0px 10px 0px 10px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: rgb(189,173,148);
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: rgb(132,60,61);
+  color: rgb(231,233,220);
+}
+
+.page-name {
+  margin: 17px 0 0 5px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 0px 0px 0px 0px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+
+/* Navbar with logo and admininfo Button */
+.mainnavbar {
+  color: rgb(56,41,44);
+  padding: 0px 18px 0px 0px;
+  background-color: rgb(189,173,148);
+}
+
+.logo-name {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 15px;
+  padding: 3px 0 0 0;
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+/*logo*/
+.logo {
+  height: 21px;
+  width: 21px;
+}
+
+
+.navbar-text {
+  padding-right: 8px;
+}
+
+
+
+
+/*List of Users Spacing */
+.margin {
+  margin: 14px 20px 0px 20px;
+}
+
+/* User-list Tables */
+.user-list-table td {
+  border-color: rgb(132,60,61);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.user-list-table thead {
+  background-color: rgb(213,169,106); 
+  border-color: rgb(132,60,61);
+  border-style: solid;
+  border-width: 1px;
+}
+
+
+ .user-list-table {
+  font-size: 14px
+}
+
+
+
+
+
+
+/* View articles Articles Page */
+
+.articles {
+  color: rgb(56,41,44);
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(132,60,61);
+  
+  margin: 23px 24px 0px 15px;
+  padding: 11px 23px 0px 13px;
+  background-color: rgb(189,173,148);
+  border-radius: 1px;
+  word-wrap: break-word;
+  overflow-y: hidden;
+
+}
+
+.article-title {
+  padding: 0;
+  margin: 9px 0 0 0;
+  letter-spacing: 2px;
+  font-size: 19px;
+}
+
+.articles-title:hover {
+  text-decoration: underline;
+}
+
+.image_articles {
+  height: 147px;
+  width: 100%;
+  margin: 10px 0px 0 6px;
+  border-radius: 3px;
+  padding-right: 17px;
+
+   
+}
+
+.image-article-division {
+   }
+
+.article-text-first {
+  margin: 0px;
+  font-size: 15px;
+}
+
+.articles-icon {
+  height: 32px;
+  width: 32px;
+  margin-right: 8px;
+}
+
+
+.all-articles-icon-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 19px;
+}
+
+.article-text-second {
+  margin-top: 35px;
+  font-size: 15px;
+}
+
+
+/* Reply message Page*/
+.message {
+  height: 153px;
+
+
+}
+
+.message p {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+}
+
+.reply {
+  border-style: solid;
+  height: 250px;
+  margin: 25px 23px 25px 23px;
+  padding: 11px 23px 0px 16px;
+  color: rgb(56,41,44);
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(132,60,61);
+  background-color: rgb(189,173,148);
+  border-radius: 1px;
+}
+
+/* Message Scrollbar */
+.scrolling-wrapper {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: rgb(231,233,220);
+  height: 120px;
+  padding: 15px;
+}
+
+/* To and date vs Message content Spacing */
+.ptest {
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.area {
+  background-color: rgb(231,233,220);
+}
+
+
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.container1{
+  float:left;
+    border-style: solid;
+  border-width: 2px;
+  border-color: rgb(132,60,61);
+}
+.container2{
+  float:left;
+    border-style: solid;
+  border-width: 2px;
+  border-color: rgb(132,60,61);
+  margin-left: 10px;
+}
+.contain{
+  padding-top:85px;
+  padding-bottom:200px;
+}
+.publish-text{
+
+  resize:none;
+}
+.imgcontainer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logo-login {
+  width: 80px;
+  height: 80px;
+}
