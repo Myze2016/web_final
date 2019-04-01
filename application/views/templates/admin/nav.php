@@ -19,7 +19,7 @@
   <a class="link_list" href="<?php echo base_url("controller/user_list")?>">
     <img src="<?php echo base_url("assets/images/iconPeople.png") ?>" class="img-rounded  icon">
      User List</a>
-  <a class="link_article" href="<?php echo base_url("controller/view")?>">   <img src="<?php echo base_url("assets/images/iconArticles.png") ?>" class="img-rounded  icon"> View Articles</a>
+  <a class="link_article" href="<?php echo base_url("controller/blog_list")?>">   <img src="<?php echo base_url("assets/images/iconArticles.png") ?>" class="img-rounded  icon"> View Articles</a>
   <a class="link_publish" href="<?php echo base_url("controller/publish")?>">  <img src="<?php echo base_url("assets/images/iconPublish.png") ?>" class="img-rounded  icon"> Publish Article</a>
   <a class="link_reply" href="<?php echo base_url("controller/reply")?>">  <img src="<?php echo base_url("assets/images/iconMessage.png") ?>" class="img-rounded  icon"> Messages</a>
   <a class="link_logout" href="<?php echo base_url("controller/login")?>">Log-Out</a>

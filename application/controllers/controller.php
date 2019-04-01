@@ -71,7 +71,7 @@ class controller extends CI_Controller {
 		$password  = $this->input->post('password');
 		$email  =  $this->input->post('email');
 
-		/**if($email == "admin" && $password == "1234") {
+		if($email == "admin" && $password == "1234") {
 			$newdata = array(
 					'admin' => TRUE,
 			        'email'     => $email,
@@ -80,7 +80,7 @@ class controller extends CI_Controller {
 
 				$this->session->set_userdata($newdata);
 				header('location:'.base_url(). "controller/user_list");
-		} else {***/
+		} else {
 		$userExists  =  $this->user_model->check_email($email);
 		if(!$userExists){
 
@@ -91,45 +91,49 @@ class controller extends CI_Controller {
 
 		} else {
 			$correctLogin = $this->user_model->check_valid($email,$password);
-			
+			$id = $this->user_model->check_id($email);
 			if ($correctLogin) {
 				$newdata = array(
-			        'admin' => TRUE,
+			        'admin' => FALSE,
 			        'email'     => $email,
-			        'logged_in' => TRUE
+			        'logged_in' => TRUE,
+			        'user' => $id,
 				);
 
 				$this->session->set_userdata($newdata);
-				header('location:'.base_url(). "controller/user_list");
+				header('location:'.base_url(). "controller/home");
 			} else {
 				header('location:'.base_url(). "controller/login");
 			}
 		}		
-
-	}
+}}
+	
 
 	public function publish_blog() {
 
 		$words  =   $this->input->post('words');
 		$image  =  $this->input->post('image');
+		$title  =  $this->input->post('Title');
 
 		$this->load->database();
 		$this->load->model('user_model');
 		$data   =  array(
 				'words' => $words,
 				'image' => $image,
+				'title' => $title,
 			);
 		$result   = $this->user_model->save($data);
 		header('Location:  '  . base_url('controller/publish'));
 	}
 	
-	public function comment()
+	public function comment($id)
 	{
 		$this->load->database();
 		$this->load->model('user_model');
-		$id =  $this->input->get('id');
-		$data  = array('users' => $this->user_model->view_all_users());
-
+		
+	
+		$data  = array('users' => $this->user_model->get_blogs($id));
+		
 		// ---> insert homepage headers/nav/footer
 		$this->load->view('templates/header');
 		$this->load->view('templates/nav.php');
@@ -145,6 +149,34 @@ class controller extends CI_Controller {
 		$this->load->view('templates/admin/footer');
 	}
 
+
+	public function blog_list()
+	{
+
+		$this->load->database();
+		$this->load->model('user_model');
+		$data  = array('users' => $this->user_model->view_all());
+		$this->load->view('templates/admin/header');
+		$this->load->view('templates/admin/nav.php');
+		$this->load->view('users/admin_page_user',$data);
+		$this->load->view('templates/admin/footer');
+	}
+
+	public function message() {
+		$id = $_SESSION['user'];
+		echo var_dump($id);
+	}
+	public function message_list()
+	{
+
+		$this->load->database();
+		$this->load->model('user_model');
+		$data  = array('users' => $this->user_model->view_all_message());
+		$this->load->view('templates/admin/header');
+		$this->load->view('templates/admin/nav.php');
+		$this->load->view('users/admin_page_message',$data);
+		$this->load->view('templates/admin/footer');
+	}
 
 	public function user_list()
 	{
@@ -164,10 +196,10 @@ class controller extends CI_Controller {
 		$this->load->model('user_model');
 		$data  = array('blogs' => $this->user_model->view_all());
 
-		$this->load->view('templates/admin/header');
-		$this->load->view('templates/admin/nav.php');
+		$this->load->view('templates/header');
+		$this->load->view('templates/nav.php');
 		$this->load->view('users/admin_view',$data);
-		$this->load->view('templates/admin/footer');
+		$this->load->view('templates/footer');
 	}
 
 		public function reply()
@@ -180,11 +212,64 @@ class controller extends CI_Controller {
 
 	public function home()
 	{
+		$this->load->database();
+		$this->load->model('user_model');
+		$data  = array('blogs' => $this->user_model->view_all());
 		$this->load->view('templates/header.php');
 		$this->load->view('templates/nav.php');
-		$this->load->view('users/home.php');
+		$this->load->view('users/home.php', $data);
 		$this->load->view('templates/footer');
 	}
+	public function update(){
 
+		
+			$words  =   $this->input->post('words');
+			$image  =  $this->input->post('image');
+			$title  =  $this->input->post('Title');
+			$id = $this->input->post('id');
+			echo var_dump($words);
+			$this->load->database();
+			$data   =  array(
+					'words' => $words,
+					'image' => $image,
+					'title' => $title,
+				);
+			$this->load->model('user_model');
+			$result   = $this->user_model->save_update($data, $id);
+			
+			if($result > 0){
+				//Query is success
+				header('Location:  '    . base_url('controller/user_list'));
+			}else{
+				//Data not inserted
+			}
+		
+	}
+
+
+public function edit($id){  //edit by id /folder/class/method/parameters = edit($id)
+		$this->load->database();
+		$this->load->model('user_model'); //edit using id
+		$data = array('users'=>$this->user_model->get_blogs($id));
+		
+		$this->load->view('templates/header');
+		$this->load->view('templates/nav.php');
+		$this->load->view('users/edit_user',$data);
+		$this->load->view('templates/footer');
+}	
+
+
+
+	public function delete($id){
+		$this->load->database();
+		$this->load->model('user_model');
+		$result = $this->user_model->deleted($id);
+		if($result > 0){
+				//Query is success
+				header('Location:  '    . base_url('controller/user_list'));
+			}else{
+				//Data not inserted
+			}
+		}
 
 }

@@ -7,7 +7,7 @@
   }
 </style>
 
-<form action="<?php echo base_url('controller/publish_blog')?>" method="post" style="padding: 20px;"> 
+<form action="<?php echo base_url('controller/update')?>" method="post" style="padding: 20px;"> 
 
 <div class="form-group">
   <label for="exampleFormControlTextarea3">Article Title: </label> <input type="text" name="Title"> 
@@ -20,5 +20,3 @@
 
 
  <input class="publish" type="submit" value="publish post"> </input> <br></form>
-  
-

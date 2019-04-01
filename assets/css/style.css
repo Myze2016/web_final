@@ -2,6 +2,74 @@
   padding: 0px;
 }
 
+
+.articles {
+  color: rgb(56,41,44);
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(132,60,61);
+  margin: 23px 24px 0px 15px;
+  padding: 20px 15px 0px 15px;
+  background-color: rgb(189,173,148);
+  border-radius: 1px;
+  word-wrap: break-word;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+}
+
+.article-title {
+  padding: 0;
+  margin: 9px 0 0 0;
+  letter-spacing: 2px;
+  font-size: 19px;
+}
+
+.articles-title:hover {
+  text-decoration: underline;
+}
+
+.image_articles {
+  height: 120px;
+  width: 100%;
+  margin: 10px 0px 0 6px;
+  border-radius: 3px;
+
+
+   
+}
+
+.image-article-division {
+   }
+
+.article-text-first {
+  margin: 0px;
+  font-size: 15px;
+}
+
+.articles-icon {
+  height: 32px;
+  width: 32px;
+  margin-right: 8px;
+}
+
+
+.all-articles-icon-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 19px;
+}
+
+.article-text-second {
+  margin-top: 35px;
+  font-size: 15px;
+}
+
+
+html {
+  background-color: rgb(132,60,61);
+}
 /*body */
 body {
   color: rgb(56,41,44);

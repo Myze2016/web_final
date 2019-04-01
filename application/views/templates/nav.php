@@ -5,20 +5,17 @@
 	 <img src="<?php echo base_url("assets/images/logo.png") ?>" width="32%">
 	</p>
     	<ul class="navbar-nav mr-auto float-right col-md-10">
-      	<li class="nav-item col-md-2">
-        	<a class="nav-link " href="<?php echo base_url();?>index.php">HOME</a>
+      	<li class="nav-item">
+        	<a class="nav-link " href="<?php echo base_url('controller/home');?>">HOME</a>
      	 </li>
-      	<li class="nav-item col-md-2">
-        	<a class="nav-link " href="#">ABOUT</a>
+      	<li class="nav-item">
+        	<a class="nav-link " href="<?php echo base_url('controller/view');?>">BLOGS</a>
       	</li>
-      	<li class="nav-item col-md-2">
-        	<a class="nav-link " href="#">BLOGS</a>
+      	<li class="nav-item ">
+        	<a class="nav-link " href="<?php echo base_url('controller/contact');?>">CONTACT US</a>
       	</li>
-      	<li class="nav-item col-md-2">
-        	<a class="nav-link " href="#">CONTACT US</a>
-      	</li>
-      	<li class="nav-item col-md-2">
-        	<a class="nav-link " href="#">LOGIN</a></button>
+      	<li class="nav-item ">
+        	<a class="nav-link " href="<?php echo base_url('controller/login');?>">LOGIN</a></button>
       	</li>
       	<li class="nav-item">
       		<small>	

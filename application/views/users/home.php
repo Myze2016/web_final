@@ -4,6 +4,10 @@
      background-color: rgb(132,60,61);
   }
 
+  .bushet {
+     padding: 25px;
+  }
+
 </style>
 <body>
 
@@ -24,76 +28,60 @@
 
   <!-- Main Content -->
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-9 mx-auto pull-left">
+   
+     <?php foreach($blogs as $blog):
+        if($blog['id'] == 4 ){
+
+          break;
+
+        }
+
+
+        else{
+      ;?>
+      
+    <div class="row bushet">
+     
+      <div class="col-lg-3">
+        <img src="<?php echo base_url("assets/images/blog/".$blog['image']) ?>" class="img-rounded image_articles">
+      </div>
+      <div class="col-lg-9 col-md-9 mx-auto pull-left">
         <div class="post-preview">
+          
           <a href="post.html">
             <h2 class="post-title">
-              Lorem ipsum dolor sit amet
+      
+              <?php echo $blog['Title']?>
             </h2>
           </a>
-            <h3 class="post-subtitle">
-              Lorem ipsum dolor sit amet, has ludus comprehensam mediocritatem te. Vel quem molestiae omittantur ad, eum id utinam civibus. Eu dolorem sensibus eos, eu semper comprehensam ius. Augue iracundia ne sea, id duo virtute vocibus.
+            <h3 class="post-subtitle" style="word-wrap: break-word;">
+              <?php $words = substr($blog['words'], 0, 100) ?>
+              <?php  echo $words?>
+              <?php echo "..." . "<a href='#'> See More </a>"; }?>
             </h3>
+
           <p class="post-meta">Posted by
             <a href="#">Label 1</a>
             on September 24, 2019</p>
-        </div>
-         </a>
-        <hr>
-        <div class="post-preview">
-          <a href="post.html">
-            <h2 class="post-title">
-             Lorem ipsum dolor sit amet, has ludus comprehensam mediocritatem te.
-            </h2>
-          </a>
-            <h3 class="post-subtitle">
-              Lorem ipsum dolor sit amet, has ludus comprehensam mediocritatem te. Vel quem molestiae omittantur ad, eum id utinam civibus. Eu dolorem sensibus eos, eu semper comprehensam ius. Augue iracundia ne sea, id duo virtute vocibus.
-            </h3>
-          <p class="post-meta">Posted by
-            <a href="#">Label 2</a>
-            on September 18, 2019</p>
 
         </div>
+     
+       
         <hr>
-        <div class="post-preview">
-          <a href="post.html">
-            <h2 class="post-title">
-              Lorem ipsum dolor sit amet, has ludus comprehensam mediocritatem te.
-            </h2>
-          </a>
-            <h3 class="post-subtitle">
-              Lorem ipsum dolor sit amet, has ludus comprehensam mediocritatem te. Vel quem molestiae omittantur ad, eum id utinam civibus. Eu dolorem sensibus eos, eu semper comprehensam ius. Augue iracundia ne sea, id duo virtute vocibus.
-            </h3>
-          
-          <p class="post-meta">Posted by
-            <a href="#">Label 3</a>
-            on August 24, 2019</p>
-        </div>
-        <hr>
-        <div class="post-preview">
-          <a href="post.html">
-            <h2 class="post-title">
-             Lorem ipsum dolor sit amet
-            </h2>
-          </a>
-            <h3 class="post-subtitle">
-              Lorem ipsum dolor sit amet, has ludus comprehensam mediocritatem te. Vel quem molestiae omittantur ad, eum id utinam civibus. Eu dolorem sensibus eos, eu semper comprehensam ius. Augue iracundia ne sea, id duo virtute vocibus.
-            </h3>
-          
-          <p class="post-meta">Posted by
-            <a href="#">Label 4</a>
-            on July 8, 2019</p>
-        </div>
+        
         <hr>
         <!-- Pager -->
-        <div class="clearfix">
+        
+        
+      </div>
+     
+    </div>
+    
+     <?php endforeach; ?>
+  </div>
+<div class="clearfix">
           <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
         </div>
-      </div>
-    </div>
-  </div>
-
 </body>
 
 </html>

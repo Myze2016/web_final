@@ -9,39 +9,63 @@
 			$this->db->insert('blog',$data);
 			return $this->db->affected_rows();
 
+
 		}
-		public function save_user($data){
+
+		public function check_id($email) {
+			$this->db->select('id');
+			$this->db->from('users');
+			$this->db->where('email', $email);
+			$query = $this->db->get();
+			return $query->result_array();
+		}
 
 
-			$this->db->insert('users',$data);
+		public function save_update($data, $id){
+
+
+
+			$this->db->where('id', $id);
+			$this->db->update('blog', $data);
 			return $this->db->affected_rows();
 
 		}
 
+		public function get_users($id) {
+			$this->load->database();
+			$this->db->select('id,username,email');
+			$this->db->where('id',$id);
+			$query = $this->db->get('blog');
+			return $query->result_array();
+		}
+		public function get_blogs($id) {
+			$this->load->database();
+			$this->db->select('id,words,image,Title');
+			$this->db->where('id',$id);
+			$query = $this->db->get('blog');
+			return $query->result_array();
+		}
+
 		public function view_all(){
-			$this->db->select('id,words,image');
+			 $this->db->select('id,words,image,Title');
 			$result    =  $this->db->get('blog');
+
 			return $result->result_array();
 		 }
 
-		 public function blog($id) {
-		 	$this->load->database();
-			$this->load->model('user_model');
-			$this->db->select('id,words,image');
-			$this->db->from('blog');
-			$this->db->where('id', $id);
-			$query = $this->db->get();
-			return $query->result_array();
-		 }
-		
-
 		 public function view_all_users(){
-			 $this->db->select('id,username,email');
+			 $this->db->select('id,username,email,password');
 			$result    =  $this->db->get('users');
 
 			return $result->result_array();
 		 }
 		
+
+		public function update_email($id,$data) {
+
+			$this->db->where('id', $id);
+			$this->db->update('users', $data);
+		}
 
 		public function check_email($email){
 			$this->db->where('email',$email);
@@ -50,25 +74,16 @@
 		}
 
 		public function check_valid($email,$password){
-			$this->load->database();
-			$this->load->model('user_model');
 			$this->db->select('password');
 			$this->db->from('users');
 			$this->db->where('email', $email);
-			
-
 			$query = $this->db->get();
 			$original = "";
-			echo var_dump($query->result());
 			foreach ($query->result() as $row)
 			{
-					
 			        $original = $row->password;
-			        echo var_dump($original);
-			   
 			}
-			$valid = password_verify($password,$original);
-			echo var_dump($valid);
+			$valid = password_verify($password, $original);
 			return $valid;
 		}
 
@@ -78,5 +93,10 @@
 			return $query->num_rows();
 		}
 
-		
+		public function delete_user($id){
+
+			$this->db->where('id', $id);
+			$this->db->delete('users');
+			return $this->db->affected_rows();
+		}
 	}
