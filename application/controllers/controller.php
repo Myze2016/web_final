@@ -91,13 +91,15 @@ class controller extends CI_Controller {
 
 		} else {
 			$correctLogin = $this->user_model->check_valid($email,$password);
-			$id = $this->user_model->check_id($email);
+		
+			$id =  $this->user_model->check_id($email);
+			
 			if ($correctLogin) {
 				$newdata = array(
-			        'admin' => FALSE,
+			        'user' => TRUE,
 			        'email'     => $email,
 			        'logged_in' => TRUE,
-			        'user' => $id,
+			        'id' => $id,
 				);
 
 				$this->session->set_userdata($newdata);
@@ -128,17 +130,50 @@ class controller extends CI_Controller {
 	
 	public function comment($id)
 	{
+		
 		$this->load->database();
 		$this->load->model('user_model');
+		if ((isset($_SESSION['user']))) {
+			$data = array(
+				'users' => $this->user_model->get_blogs($id),
+				'blogs' => $this->user_model->get_users($_SESSION['id']),
+				'comment' => $this->user_model->get_comment($id),
+			);
+		}
+		else {
+			$data = array(
+			'users' => $this->user_model->get_blogs($id),
+			'blogs' => $this->user_model->get_users(NULL)
+			);
+		};
+		
 		
 	
-		$data  = array('users' => $this->user_model->get_blogs($id));
+		
+
 		
 		// ---> insert homepage headers/nav/footer
 		$this->load->view('templates/header');
 		$this->load->view('templates/nav.php');
 		$this->load->view('users/blogpost_comment', $data);
 		$this->load->view('templates/footer');
+	}
+
+	public function save_comment()
+	{
+		$blogid = $this->input->post('blogid');
+		$userid = $this->input->post('userid');
+		$comment = $this->input->post('comment');
+		$this->load->database();
+		$this->load->model('user_model');
+		$data   =  array(
+				'blogid' => $blogid,
+				'userid' => $userid,
+				'comment' => $comment,
+			);
+		$result   = $this->user_model->save_comment($data);
+		header('Location:  '  . base_url('controller/view'));
+
 	}
 
 	public function publish()
@@ -163,8 +198,8 @@ class controller extends CI_Controller {
 	}
 
 	public function message() {
-		$id = $_SESSION['user'];
-		echo var_dump($id);
+		$id = $_SESSION['id'];
+		echo $id;
 	}
 	public function message_list()
 	{
