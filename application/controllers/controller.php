@@ -263,7 +263,7 @@ public function edit($id){  //edit by id /folder/class/method/parameters = edit(
 	public function delete($id){
 		$this->load->database();
 		$this->load->model('user_model');
-		$result = $this->user_model->deleted($id);
+		$result = $this->user_model->delete_user($id);
 		if($result > 0){
 				//Query is success
 				header('Location:  '    . base_url('controller/user_list'));

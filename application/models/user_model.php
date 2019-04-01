@@ -12,6 +12,15 @@
 
 		}
 
+		public function save_user($data){
+
+
+			$this->db->insert('users',$data);
+			return $this->db->affected_rows();
+
+
+		}
+
 		public function check_id($email) {
 			$this->db->select('id');
 			$this->db->from('users');
