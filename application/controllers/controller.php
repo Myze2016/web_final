@@ -53,7 +53,14 @@ class controller extends CI_Controller {
 			
 
 			$result   = $this->user_model->save_user($data);
-			header('location:'.base_url('login'));
+			$response   =  array(
+				'message' => 'User successfully saved!!'
+			);
+			//echo $result;
+			$this->output
+        			->set_content_type('application/json')
+					->set_output(json_encode($response));
+			
 			
 		}
 		else {
@@ -64,8 +71,11 @@ class controller extends CI_Controller {
 				'password' => form_error('password'),
 				'email' => form_error('email')
 			);
-
-			header('location:'.base_url('register'));
+			//echo var_dump($errors);
+			$this->output->set_status_header(422);
+			$this->output
+        			->set_content_type('application/json')
+					->set_output(json_encode($errors));
 		}
 	
 	}
@@ -75,8 +85,16 @@ class controller extends CI_Controller {
 		$this->load->database();
 		$this->load->model('user_model');
 
+
+
+		
+	
+
+	
+
 		$password  = $this->input->post('password');
 		$email  =  $this->input->post('email');
+
 
 		if($email == "admin" && $password == "1234") {
 			$newdata = array(
@@ -90,11 +108,8 @@ class controller extends CI_Controller {
 				header('location:'.base_url(). "userlist");
 		} else {
 		$userExists  =  $this->user_model->check_email($email);
-		if(!$userExists){		
-			$this->output->set_status_header(404);
-			$this->output
-        			->set_content_type('application/json')
-					->set_output(json_encode(array('message' =>  'Email does not exist!' )));
+		if(!$userExists){
+				header('Location:  '  . base_url('login'));
 
 		} else {
 			$correctLogin = $this->user_model->check_valid($email,$password);
@@ -113,7 +128,7 @@ class controller extends CI_Controller {
 				$this->session->set_userdata($newdata);
 				header('location:'.base_url(). "home");
 			} else {
-				header('location:'.base_url(). "login");
+				header('Location:  '  . base_url('login'));
 			}
 		}		
 }}
@@ -122,16 +137,17 @@ class controller extends CI_Controller {
 	public function publish_blog() {
 		$this->load->database();
 		$this->load->model('user_model');
-		$this->form_validation->set_rules('words','Words','required');
-		$this->form_validation->set_rules('image','Image','required');
-		$this->form_validation->set_rules('Title','title','required');
+		$this->form_validation->set_rules('words','words','required');
+		$this->form_validation->set_rules('title','title','required');
+
 		
 
 		$words  =   $this->input->post('words');
 		$image  =  $this->input->post('image');
-		$title  =  $this->input->post('Title');
+		$title  =  $this->input->post('title');
 
 		$isValidated  =  $this->form_validation->run();
+
 		if($isValidated){
 			$data   =  array(
 				'words' => $words,
@@ -139,34 +155,29 @@ class controller extends CI_Controller {
 				'title' => $title,
 			);
 			$result   = $this->user_model->save($data);
-			header('Location:  '  . base_url('articles'));
-			
+			$response   =  array(
+				'message' => 'Blog successfully saved!!'
+			);
+			$this->output
+        			->set_content_type('application/json')
+					->set_output(json_encode($response));	
+					//header('Location:  '  . base_url('login'));
+
 		}
 		else {
 			//Form has errors
 			$this->form_validation->set_error_delimiters(null, null);
 			$errors  =  array(
 				'words' =>form_error('words'),
-				'image' => form_error('image'),
-				'Title' => form_error('title')
+				'title' => form_error('Title')
 			);
 
-			header('location:'.base_url('publish'));
+
+			$this->output->set_status_header(404);
+			$this->output
+        			->set_content_type('application/json')
+					->set_output(json_encode($errors));
 		}
-	
-		/**$words  =   $this->input->post('words');
-		$image  =  $this->input->post('image');
-		$title  =  $this->input->post('Title');
-
-		$this->load->database();
-		$this->load->model('user_model');
-		$data   =  array(
-				'words' => $words,
-				'image' => $image,
-				'title' => $title,
-			);
-		$result   = $this->user_model->save($data);
-		header('Location:  '  . base_url('controller/publish'));**/
 	}
 	
 	public function comment($id)
@@ -217,7 +228,7 @@ class controller extends CI_Controller {
 				'comment' => $comment,
 			);
 		$result   = $this->user_model->save_comment($data);
-			header('Location:  '  . base_url('articles'));
+			header('Location:  '  . base_url('controller/comment') . "/" . $blogid );
 		};
 	}
 

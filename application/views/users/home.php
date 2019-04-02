@@ -4,14 +4,14 @@
      background-color: rgb(132,60,61);
   }
 
-  .bushet {
-     padding: 25px;
+  .padding {
+     padding: 75px;
   }
     
   .masthead {
     background-repeat: no-repeat;
     background-position: center;
-    height: auto;
+    height: 295px;
     background-size: cover;  
     background-blend-mode: darken;
     }
@@ -21,32 +21,36 @@
     font-family: 'Lato', sans-serif;
     text-align: center;
     padding: 100px 20px;
+
   }
-    h1 {
-        font-size: 50px;
-    }
     .post-title {
         text-align: justify;
     }
     
-
+    .blog-list {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       background: #b8b8b8;
+       color: white;
+    }
+    .img-blog {
+         
+      width: 100%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .post-title {
+      font-size: 23px;
+    }
+    .post-subtitle {
+      font-size: 15px;
+    }
+      .post-subtitle-content {
+        font-size: 13px;
+    }
 </style>
 <body>
 
   <!-- Page Header -->
-  <div class="masthead" style="background-image: url('<?php echo base_url("assets/images/header2.png") ?>')">
-    <div class="overlay">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>DOTA 2 NEWS BLOG</h1>
-              <h3>Your Daily Dota 2 News</h3>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="masthead" style="background-image: url('<?php echo base_url("assets/images/header-logo.png") ?>')">
   </div>
 
   <!-- Main Content -->
@@ -54,10 +58,10 @@
    
      <?php foreach($blogs as $blog): ;?>
       
-    <div class="row bushet">
+    <div class="row padding blog-list">
      
-      <div class="col-lg-3">
-        <img src="<?php echo base_url("assets/images/blog/".$blog['image']) ?>" class="img-rounded image_articles">
+      <div class="col-md-3">
+        <img src="<?php echo base_url("assets/images/blog/".$blog['image']) ?>" class="img-blog float-left">
       </div>
       <div class="col-lg-9 col-md-9 mx-auto pull-left">
         <div class="post-preview">
@@ -73,31 +77,24 @@
             </h3>
           </a>
 
-            <h3 class="post-subtitle" style="word-wrap: break-word;">
+            <p class="post-subtitle" style="word-wrap: break-word;">
               <?php $words = substr($blog['words'], 0, 100) ?>
               <?php  echo $words ?>
            
-            </h3>
+            </p>
 
-            <h5 class="post-subtitle" style="word-wrap: break-word;">
+            <p class="post-subtitle-content" style="word-wrap: break-word;">
               <?php $words = substr($blog['words'], 0, 120) ?>
               <?php  echo $words?>
               <?php echo "..." . "<a href='#'> See More </a>"; ?>
-            </h5>
+            </p>
 
-
+            <br>
           <p class="post-meta">Posted by
             <b>Label 1</b>
             on <?php echo date("F d, Y")  ?></p>
 
         </div>
-     
-       
-        <hr>
-        
-        <hr>
-        <!-- Pager -->
-        
         
       </div>
      

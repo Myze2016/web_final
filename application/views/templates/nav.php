@@ -1,5 +1,7 @@
 
-<div id="main" class="row">
+
+
+<div id="main" class="row sticky content">
 	 <nav class="main navbar sticky-top navbar navbar-expand-lg navbar-light bg-light rounded col-md-12 nav-justified  nav-fill">
 	 <p class="col-md-2">
 	 <img src="<?php echo base_url("assets/images/logo.png") ?>" width="32%">

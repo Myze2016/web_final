@@ -10,7 +10,7 @@
 
 <form action="<?php echo base_url('controller/save_comment')?>" method="get" style="padding: 20px;"> 
 		<?php foreach($users as $user): ;?>
-			
+		
 			<input type="hidden" name="blogid" value="<?php echo $user['id']; ?>"> 
 	<div class="row postblog break" >
 	 	<div class="col-md-4">

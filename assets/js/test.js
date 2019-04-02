@@ -5,21 +5,19 @@ $(document).ready(function(){
 		e.preventDefault();
 		var url   = $(this).attr('action');
 
-
 		$.ajax({
-
 			url : url,
 			method: 'POST',
 			data : $(this).serialize(),
 			success: function(res){
-				$('#success-message').text(res.message);
+				//$('#success-message').text(res.message);
+				alert('qweqwe');
 			},
 			error: function(err){
-				var errors  =  JSON.parse(err.responseText)
-				
+				//var errors  =  JSON.parse(err.responseText);
+				alert('wqeqwe');
 			}
 		})
 	})
-
 
 })
