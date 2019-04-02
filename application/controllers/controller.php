@@ -326,6 +326,51 @@ class controller extends CI_Controller {
 		
 	}
 
+	public function view_user($id){
+		$this->load->database();
+		$this->load->model('user_model');
+		$data  = array('users' => $this->user_model->get_users($id));
+		$this->load->view('templates/header');
+		$this->load->view('templates/nav.php');
+		$this->load->view('users/view_user',$data);
+		$this->load->view('templates/footer');
+	}
+	
+
+public function edit_user($id){  //edit by id /folder/class/method/parameters = edit($id)
+		$this->load->database();
+		$this->load->model('user_model'); //edit using id
+		$data  = array('users' => $this->user_model->get_users($id));
+		//$data = array('users'=>$this->user_model->get_indi($id));
+		
+		$this->load->view('templates/header');
+		$this->load->view('templates/nav.php');
+		$this->load->view('users/edit_userlist',$data);
+		$this->load->view('templates/footer');
+	}
+
+public function update_user(){
+		$this->load->model('user_model');
+		$id = $this->input->post('number');
+		$this->load->database();
+		$data   =  array(
+				'username' => $this->input->post('username'),
+				'password'=> $this->input->post('password'),
+				'email' => $this->input->post('email'),
+				
+			);
+		$this->db->where('id', $id);
+		$this->db->update('users', $data); 
+		$result   =	$this->db->affected_rows();
+		if($result > 0){
+			//Query is success
+			header('Location:  '    . base_url('controller/user_list'));
+		}else{
+			echo "data not successfuly updated";
+
+			}}
+
+
 
 public function edit($id){  //edit by id /folder/class/method/parameters = edit($id)
 		$this->load->database();
