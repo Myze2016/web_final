@@ -21,7 +21,7 @@
      User List</a>
   <a class="link_article" href="<?php echo base_url("bloglist")?>">   <img src="<?php echo base_url("assets/images/iconArticles.png") ?>" class="img-rounded  icon"> View Articles</a>
   <a class="link_publish" href="<?php echo base_url("publish")?>">  <img src="<?php echo base_url("assets/images/iconPublish.png") ?>" class="img-rounded  icon"> Publish Article</a>
-  <a class="link_reply" href="<?php echo base_url("reply")?>">  <img src="<?php echo base_url("assets/images/iconMessage.png") ?>" class="img-rounded  icon"> Messages</a>
+  <a class="link_reply" href="<?php echo base_url("controller/message_list")?>">  <img src="<?php echo base_url("assets/images/iconMessage.png") ?>" class="img-rounded  icon"> Messages</a>
   <a class="link_logout" href="<?php echo base_url("login")?>">Log-Out</a>
 </div>
 </div>

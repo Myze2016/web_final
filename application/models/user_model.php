@@ -30,6 +30,15 @@
 
 		}
 
+		public function save_contact($data){
+
+
+			$this->db->insert('message',$data);
+			return $this->db->affected_rows();
+
+
+		}
+
 		public function save_comment($data) {
 			$this->db->insert('comments',$data);
 			return $this->db->affected_rows();
@@ -97,6 +106,18 @@
 			return $result->result_array();
 		 }
 
+		 public function view_all_message(){
+		 	
+
+	
+			 $this->db->select('message.id,message.message,users.username');
+			 $this->db->join('users', 'message.user_id = users.id', 'inner');
+			 $this->db->from('message');
+			 $this->db->order_by('id','DESC');
+			 $result    =  $this->db->get();
+    		 return $result->result_array();
+		 }
+
 		 public function view_all_latest(){
 			 $this->db->select('id,words,image,Title');
 			 $this->db->order_by('id','DESC');
@@ -150,6 +171,12 @@
 
 			$this->db->where('id', $id);
 			$this->db->delete('users');
+			return $this->db->affected_rows();
+		}
+		public function delete_message($id){
+
+			$this->db->where('id', $id);
+			$this->db->delete('message');
 			return $this->db->affected_rows();
 		}
 
