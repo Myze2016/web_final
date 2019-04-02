@@ -50,6 +50,19 @@
 
 		}
 
+		public function check_username($email) {
+			$this->db->select('username');
+			$this->db->from('users');
+			$this->db->where('email', $email);
+			$query = $this->db->get();
+			foreach ($query->result() as $row)
+			{
+			        $original = $row->username;
+			}
+			return $original;
+
+		}
+
 
 		public function save_update($data, $id){
 
@@ -78,7 +91,17 @@
 
 		public function view_all(){
 			 $this->db->select('id,words,image,Title');
-			$result    =  $this->db->get('blog');
+			 $this->db->order_by('id','DESC');
+			 $result    =  $this->db->get('blog');
+
+			return $result->result_array();
+		 }
+
+		 public function view_all_latest(){
+			 $this->db->select('id,words,image,Title');
+			 $this->db->order_by('id','DESC');
+			 $this->db->limit(3);
+			 $result    =  $this->db->get('blog');
 
 			return $result->result_array();
 		 }
@@ -127,6 +150,14 @@
 
 			$this->db->where('id', $id);
 			$this->db->delete('users');
+			return $this->db->affected_rows();
+		}
+
+		public function delete_article($id){
+			$this->db->where('blogid', $id);
+			$this->db->delete('comments');
+			$this->db->where('id', $id);
+			$this->db->delete('blog');
 			return $this->db->affected_rows();
 		}
 	}

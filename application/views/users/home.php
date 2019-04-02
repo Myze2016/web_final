@@ -29,16 +29,7 @@
   <!-- Main Content -->
   <div class="container">
    
-     <?php foreach($blogs as $blog):
-        if($blog['id'] == 4 ){
-
-          break;
-
-        }
-
-
-        else{
-      ;?>
+     <?php foreach($blogs as $blog): ;?>
       
     <div class="row bushet">
      
@@ -48,16 +39,16 @@
       <div class="col-lg-9 col-md-9 mx-auto pull-left">
         <div class="post-preview">
           
-          <a href="post.html">
-            <h2 class="post-title">
+          <a href="<?php echo base_url("controller/comment") . "/" . $blog['id']  ?>">
+            <h2 class="post-title" >
       
               <?php echo $blog['Title']?>
             </h2>
           </a>
             <h3 class="post-subtitle" style="word-wrap: break-word;">
               <?php $words = substr($blog['words'], 0, 100) ?>
-              <?php  echo $words?>
-              <?php echo "..." . "<a href='#'> See More </a>"; }?>
+              <?php  echo $words ?>
+           
             </h3>
 
           <p class="post-meta">Posted by

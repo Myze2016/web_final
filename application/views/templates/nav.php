@@ -6,16 +6,21 @@
 	</p>
     	<ul class="navbar-nav mr-auto float-right col-md-10">
       	<li class="nav-item">
-        	<a class="nav-link " href="<?php echo base_url('controller/home');?>">HOME</a>
+        	<a class="nav-link " href="<?php echo base_url('home');?>">HOME</a>
      	 </li>
       	<li class="nav-item">
-        	<a class="nav-link " href="<?php echo base_url('controller/view');?>">BLOGS</a>
+        	<a class="nav-link " href="<?php echo base_url('articles');?>">BLOGS</a>
       	</li>
       	<li class="nav-item ">
         	<a class="nav-link " href="<?php echo base_url('controller/contact');?>">CONTACT US</a>
       	</li>
       	<li class="nav-item ">
-        	<a class="nav-link " href="<?php echo base_url('controller/login');?>">LOGIN</a></button>
+          <?php if ((isset($_SESSION['logged_in']))) { ?>
+             <a class="nav-link " href="<?php echo base_url('login');?>"> <?php echo $_SESSION['username']?></a></button>
+        	
+         <?php } else {?>
+         <a class="nav-link " href="<?php echo base_url('login');?>">LOGIN</a></button>
+          <?php };?>
       	</li>
       	<li class="nav-item">
       		<small>	
