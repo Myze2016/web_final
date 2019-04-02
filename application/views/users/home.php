@@ -102,8 +102,8 @@
     
      <?php endforeach; ?>
   </div>
-<div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+<div class="clearfix padding">
+          <a class="btn btn-primary float-right " href="#">Older Posts &rarr;</a>
         </div>
 </body>
 
