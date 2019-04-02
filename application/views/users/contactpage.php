@@ -4,14 +4,16 @@
  			<h2>Question</h2>
  		</div>
  	</div>
+ 	<form  action="<?php echo base_url('controller/add_contact');?>" method="GET" class="form-group">
  	<div class="row">
  		<div class="col-md-12 ">
  			
- 			<textarea class="form-control" id="exampleFormControlTextarea1" rows="10" ></textarea>
+ 			<textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="10" ></textarea>
  			
  		</div>
 
  	</div>
+ 
 	<div class="row">
 		<div class="col-md-10">
 			<h4>CASIANO, CHRISTIAN VAL .O III</h4>
@@ -38,5 +40,5 @@
 	</footer>
 
 
-
+</form>
 	</div>

@@ -15,7 +15,7 @@
     </div>
 
    <form  action="<?php echo base_url('controller/login_user');?>" method="POST" class="form-group">
-    <form>
+
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="ENTER USERNAME">
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="ENTER PASSWORD">
       <input type="submit"  class="fadeIn fourth" value="Log In">

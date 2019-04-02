@@ -3,7 +3,7 @@ $(document).ready(function(){
 	
 	$('#userform').submit(function(e){
 		e.preventDefault();
-		var url   = $(this).attr('action');
+		var url   = '$(this).attr('action')';
 
 
 		$.ajax({
@@ -15,11 +15,13 @@ $(document).ready(function(){
 				$('#success-message').text(res.message);
 			},
 			error: function(err){
-				var errors  =  JSON.parse(err.responseText)
 				
+				alert('ERROR');				
 			}
 		})
 	})
 
 
 })
+
+

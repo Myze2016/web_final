@@ -1,9 +1,4 @@
-
-
-
-
- 
-  <div class="margin">
+<div class="margin">
 <h4> Blog List </h4>           
   <table class="table user-list-table table-hover">
     

@@ -13,11 +13,31 @@ class controller extends CI_Controller {
 	}
 
 	public function contact() {
+
+
 		$this->load->view('templates/header');
-		$this->load->view('templates/nav.php');
+		$this->load->view('templates/nav.php');	
 		$this->load->view('users/contactpage');
 		$this->load->view('templates/footer');
 	}
+
+
+	public function add_contact(){
+		if (!(isset($_SESSION['user']))) {
+				header('Location:  '  . base_url('login'));
+			}
+		else {
+		$message = $this->input->get('message');
+		$this->load->database();
+		$this->load->model('user_model');
+		$data   =  array(
+				'message' => $message,
+				'user_id' => $_SESSION['id']
+			);
+		$result   = $this->user_model->save_contact($data);
+			header('Location:  '  . base_url('controller/contact'));
+		};
+}
 	public function register()                  //login and comment uses Homepage Navbar
 	{
 
@@ -53,19 +73,21 @@ class controller extends CI_Controller {
 			
 
 			$result   = $this->user_model->save_user($data);
-			header('location:'.base_url('login'));
+			header('location:'.base_url('register'));
 			
 		}
 		else {
 			//Form has errors
 			$this->form_validation->set_error_delimiters(null, null);
-			$errors  =  array(
+			$err =  array(
 				'username' =>form_error('username'),
 				'password' => form_error('password'),
 				'email' => form_error('email')
 			);
+			
+			echo validation_errors();
 
-			header('location:'.base_url('register'));
+			//header('location:'.base_url('register'));
 		}
 	
 	}
@@ -254,7 +276,7 @@ class controller extends CI_Controller {
 		$data  = array('users' => $this->user_model->view_all_message());
 		$this->load->view('templates/admin/header');
 		$this->load->view('templates/admin/nav.php');
-		$this->load->view('users/admin_page_message',$data);
+		$this->load->view('users/message_list',$data);
 		$this->load->view('templates/admin/footer');
 	}
 
@@ -275,7 +297,6 @@ class controller extends CI_Controller {
 		$this->load->database();
 		$this->load->model('user_model');
 		$data  = array('blogs' => $this->user_model->view_all());
-
 		$this->load->view('templates/header');
 		$this->load->view('templates/nav.php');
 		$this->load->view('users/admin_view',$data);
@@ -392,6 +413,18 @@ public function edit($id){  //edit by id /folder/class/method/parameters = edit(
 		if($result > 0){
 				//Query is success
 				header('Location:  '    . base_url('bloglist'));
+			}else{
+				header('Location:  '    . base_url('bloglist'));
+			}
+		}
+
+		public function delete_message($id){
+		$this->load->database();
+		$this->load->model('user_model');
+		$result = $this->user_model->delete_message($id);
+		if($result > 0){
+				//Query is success
+				header('Location:  '    . base_url('controller/message_list'));
 			}else{
 				header('Location:  '    . base_url('bloglist'));
 			}
