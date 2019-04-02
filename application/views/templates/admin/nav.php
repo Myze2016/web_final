@@ -8,7 +8,7 @@
         <div class="col-sm-3">
   		<img src="<?php echo base_url("assets/images/kay-vogelgesang.jpg") ?>" class="img-rounded rounded-circle  d-block mx-auto image"> </div>
       <div class="col-sm-7 adminText">
-  		<label class="name"> Erwin P. Rommel </label><br>
+  		<label class="name"> Shainah Lour Jagualing </label><br>
   		<label class="accountType">  Admin  </label>
      
         </div>

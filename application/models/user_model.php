@@ -12,6 +12,15 @@
 
 		}
 
+		public function get_comment($id) {
+			$this->db->select('username,comment');
+			$this->db->from('comments');
+			$this->db->join('users', 'comments.userid = users.id', 'inner');
+			$this->db->where('comments.blogid', $id);
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+
 		public function save_user($data){
 
 
@@ -21,12 +30,24 @@
 
 		}
 
+		public function save_comment($data) {
+			$this->db->insert('comments',$data);
+			return $this->db->affected_rows();
+		}
+
+
+
 		public function check_id($email) {
 			$this->db->select('id');
 			$this->db->from('users');
 			$this->db->where('email', $email);
 			$query = $this->db->get();
-			return $query->result_array();
+			foreach ($query->result() as $row)
+			{
+			        $original = $row->id;
+			}
+			return $original;
+
 		}
 
 
@@ -44,7 +65,7 @@
 			$this->load->database();
 			$this->db->select('id,username,email');
 			$this->db->where('id',$id);
-			$query = $this->db->get('blog');
+			$query = $this->db->get('users');
 			return $query->result_array();
 		}
 		public function get_blogs($id) {
