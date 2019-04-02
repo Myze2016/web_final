@@ -63,7 +63,7 @@
 
 		public function get_users($id) {
 			$this->load->database();
-			$this->db->select('id,username,email');
+			$this->db->select('id,username,email,password');
 			$this->db->where('id',$id);
 			$query = $this->db->get('users');
 			return $query->result_array();
