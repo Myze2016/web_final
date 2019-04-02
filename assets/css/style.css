@@ -15,9 +15,17 @@
   word-wrap: break-word;
   overflow-y: hidden;
   overflow-x: hidden;
+  height: 220px;
+
 
 }
 
+
+
+.articles:hover {
+   background-color: #f1f1f1;
+   text-decoration: none;
+}
 .article-title {
   padding: 0;
   margin: 9px 0 0 0;
@@ -25,9 +33,7 @@
   font-size: 19px;
 }
 
-.articles-title:hover {
-  text-decoration: underline;
-}
+
 
 .image_articles {
   height: 120px;
@@ -188,14 +194,7 @@ body {
   float: right;
 }
 
-.articles {
-  border-style: solid;
-  border-width: thin;
-  height: 250px;
-  margin: 25px 0px 25px 0px;
-  padding: 10px;
-  word-wrap: break-word;
-}
+
 
 
 

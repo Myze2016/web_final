@@ -8,7 +8,7 @@
         <div class="col-sm-3">
   		<img src="<?php echo base_url("assets/images/kay-vogelgesang.jpg") ?>" class="img-rounded rounded-circle  d-block mx-auto image"> </div>
       <div class="col-sm-7 adminText">
-  		<label class="name"> Shainah Lour Jagualing </label><br>
+  		<label class="name"> Erwin P. Rommel </label><br>
   		<label class="accountType">  Admin  </label>
      
         </div>
@@ -16,13 +16,13 @@
 
 
 <div class="links">	
-  <a class="link_list" href="<?php echo base_url("controller/user_list")?>">
+  <a class="link_list" href="<?php echo base_url("userlist")?>">
     <img src="<?php echo base_url("assets/images/iconPeople.png") ?>" class="img-rounded  icon">
      User List</a>
-  <a class="link_article" href="<?php echo base_url("controller/blog_list")?>">   <img src="<?php echo base_url("assets/images/iconArticles.png") ?>" class="img-rounded  icon"> View Articles</a>
-  <a class="link_publish" href="<?php echo base_url("controller/publish")?>">  <img src="<?php echo base_url("assets/images/iconPublish.png") ?>" class="img-rounded  icon"> Publish Article</a>
-  <a class="link_reply" href="<?php echo base_url("controller/reply")?>">  <img src="<?php echo base_url("assets/images/iconMessage.png") ?>" class="img-rounded  icon"> Messages</a>
-  <a class="link_logout" href="<?php echo base_url("controller/login")?>">Log-Out</a>
+  <a class="link_article" href="<?php echo base_url("bloglist")?>">   <img src="<?php echo base_url("assets/images/iconArticles.png") ?>" class="img-rounded  icon"> View Articles</a>
+  <a class="link_publish" href="<?php echo base_url("publish")?>">  <img src="<?php echo base_url("assets/images/iconPublish.png") ?>" class="img-rounded  icon"> Publish Article</a>
+  <a class="link_reply" href="<?php echo base_url("reply")?>">  <img src="<?php echo base_url("assets/images/iconMessage.png") ?>" class="img-rounded  icon"> Messages</a>
+  <a class="link_logout" href="<?php echo base_url("login")?>">Log-Out</a>
 </div>
 </div>
 <div id="main">

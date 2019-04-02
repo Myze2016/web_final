@@ -52,16 +52,7 @@
   <!-- Main Content -->
   <div class="container">
    
-     <?php foreach($blogs as $blog):
-        if($blog['id'] == 4 ){
-
-          break;
-
-        }
-
-
-        else{
-      ;?>
+     <?php foreach($blogs as $blog): ;?>
       
     <div class="row bushet">
      
@@ -71,17 +62,30 @@
       <div class="col-lg-9 col-md-9 mx-auto pull-left">
         <div class="post-preview">
           
+<<<<<<< HEAD
+          <a href="<?php echo base_url("controller/comment") . "/" . $blog['id']  ?>">
+            <h2 class="post-title" >
+=======
           <a href="post.html">
             <h3 class="post-title">
+>>>>>>> 71e04f95509d1d333e6fbb00d301b95c40198633
       
               <?php echo $blog['Title']?>
             </h3>
           </a>
+<<<<<<< HEAD
+            <h3 class="post-subtitle" style="word-wrap: break-word;">
+              <?php $words = substr($blog['words'], 0, 100) ?>
+              <?php  echo $words ?>
+           
+            </h3>
+=======
             <h5 class="post-subtitle" style="word-wrap: break-word;">
               <?php $words = substr($blog['words'], 0, 120) ?>
               <?php  echo $words?>
               <?php echo "..." . "<a href='#'> See More </a>"; }?>
             </h5>
+>>>>>>> 71e04f95509d1d333e6fbb00d301b95c40198633
 
           <p class="post-meta">Posted by
             <b>Label 1</b>

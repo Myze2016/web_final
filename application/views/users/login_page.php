@@ -17,15 +17,27 @@
    <form  action="<?php echo base_url('controller/login_user');?>" method="POST" class="form-group">
     <form>
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="ENTER USERNAME">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="ENTER PASSWORD">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="ENTER PASSWORD">
+      <input type="submit"  class="fadeIn fourth" value="Log In">
     </form>
 
    
     <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <a class="underlineHover" href="<?php echo base_url('register');?>">Register?</a>
+      <label> || </label>
+       <a class="underlineHover" href="<?php echo base_url('home');?>" >Home</a>
     </div>
   </form>
   </div>
 </div>
+  <script src="<?php echo base_url('assets/js/jquery-3.3.1.min.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/test.js'); ?>" ></script>
+  <script>
+
+  
+  
+
+
+   
+  </script>
 </body>

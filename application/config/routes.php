@@ -52,4 +52,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'controller/home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['view'] = 'controller/view'; // /blog/dbmsBlog/view
+$route['articles'] = 'controller/view'; // /blog/dbmsBlog/view
+$route['home'] = 'controller/home';
+$route['login'] = 'controller/login';
+$route['register'] = 'controller/register';
+$route['articles'] = 'controller/view';
+$route['userlist'] = 'controller/user_list';
+$route['bloglist'] = 'controller/blog_list';
+$route['publish'] = 'controller/publish';
+$route['reply'] = 'controller/reply';
+

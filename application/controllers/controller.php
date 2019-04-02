@@ -12,8 +12,15 @@ class controller extends CI_Controller {
 		$this->load->view('users/login_page');
 	}
 
+	public function contact() {
+		$this->load->view('templates/header');
+		$this->load->view('templates/nav.php');
+		$this->load->view('users/contactpage');
+		$this->load->view('templates/footer');
+	}
 	public function register()                  //login and comment uses Homepage Navbar
 	{
+
 		$this->load->view('users/register_page');
 	}
 
@@ -46,7 +53,7 @@ class controller extends CI_Controller {
 			
 
 			$result   = $this->user_model->save_user($data);
-			header('location:'.base_url('controller/register'));
+			header('location:'.base_url('login'));
 			
 		}
 		else {
@@ -58,7 +65,7 @@ class controller extends CI_Controller {
 				'email' => form_error('email')
 			);
 
-			header('location:'.base_url('controller/register'));
+			header('location:'.base_url('register'));
 		}
 	
 	}
@@ -75,15 +82,15 @@ class controller extends CI_Controller {
 			$newdata = array(
 					'admin' => TRUE,
 			        'email'     => $email,
-			        'logged_in' => TRUE
+			        'logged_in' => TRUE,
+			        'username' => "Admin"
 				);
 
 				$this->session->set_userdata($newdata);
-				header('location:'.base_url(). "controller/user_list");
+				header('location:'.base_url(). "userlist");
 		} else {
 		$userExists  =  $this->user_model->check_email($email);
-		if(!$userExists){
-
+		if(!$userExists){		
 			$this->output->set_status_header(404);
 			$this->output
         			->set_content_type('application/json')
@@ -93,27 +100,61 @@ class controller extends CI_Controller {
 			$correctLogin = $this->user_model->check_valid($email,$password);
 		
 			$id =  $this->user_model->check_id($email);
-			
+			$username = $this->user_model->check_username($email);
 			if ($correctLogin) {
 				$newdata = array(
 			        'user' => TRUE,
 			        'email'     => $email,
 			        'logged_in' => TRUE,
 			        'id' => $id,
+			        'username' => $username,
 				);
 
 				$this->session->set_userdata($newdata);
-				header('location:'.base_url(). "controller/home");
+				header('location:'.base_url(). "home");
 			} else {
-				header('location:'.base_url(). "controller/login");
+				header('location:'.base_url(). "login");
 			}
 		}		
 }}
 	
 
 	public function publish_blog() {
+		$this->load->database();
+		$this->load->model('user_model');
+		$this->form_validation->set_rules('words','Words','required');
+		$this->form_validation->set_rules('image','Image','required');
+		$this->form_validation->set_rules('Title','title','required');
+		
 
 		$words  =   $this->input->post('words');
+		$image  =  $this->input->post('image');
+		$title  =  $this->input->post('Title');
+
+		$isValidated  =  $this->form_validation->run();
+		if($isValidated){
+			$data   =  array(
+				'words' => $words,
+				'image' => $image,
+				'title' => $title,
+			);
+			$result   = $this->user_model->save($data);
+			header('Location:  '  . base_url('articles'));
+			
+		}
+		else {
+			//Form has errors
+			$this->form_validation->set_error_delimiters(null, null);
+			$errors  =  array(
+				'words' =>form_error('words'),
+				'image' => form_error('image'),
+				'Title' => form_error('title')
+			);
+
+			header('location:'.base_url('publish'));
+		}
+	
+		/**$words  =   $this->input->post('words');
 		$image  =  $this->input->post('image');
 		$title  =  $this->input->post('Title');
 
@@ -125,29 +166,29 @@ class controller extends CI_Controller {
 				'title' => $title,
 			);
 		$result   = $this->user_model->save($data);
-		header('Location:  '  . base_url('controller/publish'));
+		header('Location:  '  . base_url('controller/publish'));**/
 	}
 	
 	public function comment($id)
 	{
-		
 		$this->load->database();
 		$this->load->model('user_model');
+		
 		if ((isset($_SESSION['user']))) {
 			$data = array(
 				'users' => $this->user_model->get_blogs($id),
 				'blogs' => $this->user_model->get_users($_SESSION['id']),
 				'comment' => $this->user_model->get_comment($id),
-			);
+			);		
 		}
 		else {
-			$data = array(
-			'users' => $this->user_model->get_blogs($id),
-			'blogs' => $this->user_model->get_users(NULL)
+		$data = array(
+				'users' => $this->user_model->get_blogs($id),
+				'comment' => $this->user_model->get_comment($id),
 			);
-		};
-		
-		
+			
+		}
+
 	
 		
 
@@ -161,9 +202,13 @@ class controller extends CI_Controller {
 
 	public function save_comment()
 	{
-		$blogid = $this->input->post('blogid');
-		$userid = $this->input->post('userid');
-		$comment = $this->input->post('comment');
+		if (!(isset($_SESSION['user']))) {
+			header('Location:  '  . base_url('login'));
+		}
+		else {
+		$blogid = $this->input->get('blogid');
+		$userid = $this->input->get('userid');
+		$comment = $this->input->get('comment');
 		$this->load->database();
 		$this->load->model('user_model');
 		$data   =  array(
@@ -172,8 +217,8 @@ class controller extends CI_Controller {
 				'comment' => $comment,
 			);
 		$result   = $this->user_model->save_comment($data);
-		header('Location:  '  . base_url('controller/view'));
-
+			header('Location:  '  . base_url('articles'));
+		};
 	}
 
 	public function publish()
@@ -249,7 +294,7 @@ class controller extends CI_Controller {
 	{
 		$this->load->database();
 		$this->load->model('user_model');
-		$data  = array('blogs' => $this->user_model->view_all());
+		$data  = array('blogs' => $this->user_model->view_all_latest());
 		$this->load->view('templates/header.php');
 		$this->load->view('templates/nav.php');
 		$this->load->view('users/home.php', $data);
@@ -346,10 +391,22 @@ public function edit($id){  //edit by id /folder/class/method/parameters = edit(
 		$result = $this->user_model->delete_user($id);
 		if($result > 0){
 				//Query is success
-				header('Location:  '    . base_url('controller/user_list'));
+				header('Location:  '    . base_url('bloglist'));
 			}else{
-				//Data not inserted
+				header('Location:  '    . base_url('bloglist'));
 			}
 		}
 
+
+		public function delete_article($id){
+		$this->load->database();
+		$this->load->model('user_model');
+		$result = $this->user_model->delete_article($id);
+		if($result > 0){
+				//Query is success
+				header('Location:  '    . base_url('bloglist'));
+			}else{
+				header('Location:  '    . base_url('bloglist'));
+			}
+		}
 }
