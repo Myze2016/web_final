@@ -4,11 +4,12 @@
 
 /*body */
 body {
-  color: rgb(56,41,44);
-  background-color: rgb(231,233,220);
-  font-family: Verdana, Geneva, sans-serif;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333;
+    background-color: #fff;
 }
-
 
 
 /* The sidebar menu */
@@ -23,7 +24,11 @@ body {
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 15px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-  color: rgb(231,233,220);
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333;
+  background-color: gray;
 }
 
 .name {

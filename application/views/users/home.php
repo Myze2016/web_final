@@ -7,24 +7,47 @@
   .bushet {
      padding: 25px;
   }
+    
+  .masthead {
+    background-repeat: no-repeat;
+    background-position: center;
+    height: auto;
+    background-size: cover;  
+    background-blend-mode: darken;
+    }
+    
+    .site-heading {
+    color: black;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    padding: 100px 20px;
+  }
+    h1 {
+        font-size: 50px;
+    }
+    .post-title {
+        text-align: justify;
+    }
+    
 
 </style>
 <body>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('<?php echo base_url("assets/images/dota2logo.jpg") ?>')">
-    <div class="overlay"></div>
+  <div class="masthead" style="background-image: url('<?php echo base_url("assets/images/header2.png") ?>')">
+    <div class="overlay">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
             <h1>DOTA 2 NEWS BLOG</h1>
-            <span class="subheading">Your Daily Dota 2 News</span>
+              <h3>Your Daily Dota 2 News</h3>
+          </div>
           </div>
         </div>
       </div>
     </div>
-  </header>
+  </div>
 
   <!-- Main Content -->
   <div class="container">
@@ -49,20 +72,20 @@
         <div class="post-preview">
           
           <a href="post.html">
-            <h2 class="post-title">
+            <h3 class="post-title">
       
               <?php echo $blog['Title']?>
-            </h2>
+            </h3>
           </a>
-            <h3 class="post-subtitle" style="word-wrap: break-word;">
-              <?php $words = substr($blog['words'], 0, 100) ?>
+            <h5 class="post-subtitle" style="word-wrap: break-word;">
+              <?php $words = substr($blog['words'], 0, 120) ?>
               <?php  echo $words?>
               <?php echo "..." . "<a href='#'> See More </a>"; }?>
-            </h3>
+            </h5>
 
           <p class="post-meta">Posted by
-            <a href="#">Label 1</a>
-            on September 24, 2019</p>
+            <b>Label 1</b>
+            on <?php echo date("F d, Y")  ?></p>
 
         </div>
      
