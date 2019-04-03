@@ -17,9 +17,13 @@
         	<a class="nav-link " href="<?php echo base_url('controller/contact');?>">CONTACT US</a>
       	</li>
       	<li class="nav-item ">
+
           <?php if ((isset($_SESSION['logged_in']))) { ?>
-             <a class="nav-link " href="<?php echo base_url('login');?>"> <?php echo $_SESSION['username']?></a></button>
-        	
+            <?php if ((isset($_SESSION['admin']))) {?>
+             <a class="nav-link " href="<?php echo base_url('userlist');?>"> <?php echo $_SESSION['username']?></a>
+             <?php } else {?>
+              <a class="nav-link " href="<?php echo base_url('login');?>"> <?php echo $_SESSION['username']?></a>
+        	   <?php } ?>
          <?php } else {?>
          <a class="nav-link " href="<?php echo base_url('login');?>">LOGIN</a></button>
           <?php };?>

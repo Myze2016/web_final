@@ -21,16 +21,14 @@
 	   
 	
 	  	<div class="col-md-8 " style="word-wrap:break-word">
-	  		<h3 class=""><?php echo $user['Title'] ?></h3>
-	   		<p class=""><?php echo $user['words'] ?></p>
+	  		<h3 class="text-justify" style="color: maroon;"><?php echo $user['Title'] ?></h3>
+	   		<p class="text-justify"><?php echo $user['words'] ?></p>
 	 	</div>
-<<<<<<< HEAD
+
 	 	<div class="form-group">
-		 	<label for="exampleFormControlTextarea3" style="padding-bottom: 10px;">comment: </label>
-=======
-		<div class="form-group">
-		 	<label for="exampleFormControlTextarea3">Comments:</label>
->>>>>>> cb7bd114bf6da62c208f84040f63284799c1e52b
+		 	<label for="exampleFormControlTextarea3" style="padding-bottom: 10px; color: maroon;"><B>COMMENTS:</B>	 </label>
+			<div class="form-group">
+
 		 	<?php if ((isset($_SESSION['user']))) {foreach ($blogs as $blog): ?> 
 			<a href="#" style="font-size: 20px"> <?php echo $blog['username']?> </a>
 			<input type="hidden" name="userid" value="<?php echo $blog['id']; ?>"> 

@@ -10,7 +10,7 @@
 
  	<?php foreach($blogs as $blog): ;?>
  		<a href="<?php echo base_url("controller/comment") . "/" . $blog['id']  ?>">
- 	<div class="articles">
+ 	<div class="articles text-justify">
 
  			<div class="row">
  				<div class="col-md-3 box-shadow" >

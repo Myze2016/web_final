@@ -73,6 +73,7 @@
 
 html {
   background-color: rgb(132,60,61);
+  font-family: Verdana, Geneva, sans-serif;
 }
 /*body */
 body {
@@ -308,8 +309,8 @@ body {
     
     .blog-list {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-       background: #b8b8b8;
-       color: white;
+       background-color: rgb(215,215,215);
+       
     }
     .img-blog {
          

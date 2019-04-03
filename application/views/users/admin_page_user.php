@@ -26,8 +26,8 @@
         <td>
          
              <a href="<?php echo base_url('controller/edit');?>/<?php echo $user['id']; ?>" class="button btn btn-success" > Edit</a> 
-               <a href="<?php echo base_url('controller/delete_article');?>/<?php echo $user['id']; ?>"  class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete # <?php echo$user['id'] ?>?');">Delete</a>
-                 <a href="<?php echo base_url('controller/comment');?>/<?php echo $user['id']; ?>" class="button btn btn-success"> View </a> 
+               <a href="<?php echo base_url('controller/delete_article');?>/<?php echo $user['id']; ?>"  class="btn btn-danger btn" onclick="return confirm('Are you sure you want to delete # <?php echo$user['id'] ?>?');">Delete</a>
+                 <a href="<?php echo base_url('controller/comment');?>/<?php echo $user['id']; ?>" class="button btn btn-primary"> View </a> 
       </td>
       </tr>
         <?php endforeach; ?>

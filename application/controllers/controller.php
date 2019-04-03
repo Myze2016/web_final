@@ -23,7 +23,7 @@ class controller extends CI_Controller {
 				header('Location:  '  . base_url('login'));
 			}
 		else {
-		$message = $this->input->get('message');
+		$message = $this->input->post('message');
 		$this->load->database();
 		$this->load->model('user_model');
 		$data   =  array(
