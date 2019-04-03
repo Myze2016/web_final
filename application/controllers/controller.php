@@ -137,8 +137,8 @@ class controller extends CI_Controller {
 	public function publish_blog() {
 		$this->load->database();
 		$this->load->model('user_model');
-		$this->form_validation->set_rules('words','words','required');
-		$this->form_validation->set_rules('title','title','required');
+		$this->form_validation->set_rules('words','Words','required');
+		$this->form_validation->set_rules('title','Title','required');
 
 		
 
@@ -149,34 +149,26 @@ class controller extends CI_Controller {
 		$isValidated  =  $this->form_validation->run();
 
 		if($isValidated){
+			$this->load->database();
+			$this->load->model('user_model');
 			$data   =  array(
 				'words' => $words,
 				'image' => $image,
 				'title' => $title,
 			);
-			$result   = $this->user_model->save($data);
-			$response   =  array(
-				'message' => 'Blog successfully saved!!'
-			);
-			$this->output
-        			->set_content_type('application/json')
-					->set_output(json_encode($response));	
-					//header('Location:  '  . base_url('login'));
- 
+			$result = $this->user_model->save($data);
+		  	header('Location:  '  . base_url('articles'));
 		}
 		else {
 			//Form has errors
 			$this->form_validation->set_error_delimiters(null, null);
 			$errors  =  array(
 				'words' =>form_error('words'),
-				'title' => form_error('Title')
+				'title' => form_error('title')
 			);
 
-
-			$this->output->set_status_header(404);
-			$this->output
-        			->set_content_type('application/json')
-					->set_output(json_encode($errors));
+			header('Location:  '  . base_url('publish'));
+			
 		}
 	}
 	
