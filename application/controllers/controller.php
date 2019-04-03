@@ -157,7 +157,7 @@ class controller extends CI_Controller {
 				'title' => $title,
 			);
 			$result = $this->user_model->save($data);
-		  	header('Location:  '  . base_url('articles'));
+		  	header('Location:  '  . base_url('bloglist'));
 		}
 		else {
 			//Form has errors

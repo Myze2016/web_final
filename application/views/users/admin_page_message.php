@@ -1,5 +1,5 @@
 <div class="margin">
-<h4> Blog List </h4>           
+<h4> Messsage List </h4>           
   <table class="table user-list-table table-hover">
     
     <thead>

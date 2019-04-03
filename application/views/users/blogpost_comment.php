@@ -25,14 +25,19 @@
 	   		<p class=""><?php echo $user['words'] ?></p>
 	 	</div>
 	 	<div class="form-group">
-		 	<label for="exampleFormControlTextarea3">comment: </label>
+		 	<label for="exampleFormControlTextarea3" style="padding-bottom: 10px;">comment: </label>
 		 	<?php if ((isset($_SESSION['user']))) {foreach ($blogs as $blog): ?> 
 			<a href="#" style="font-size: 20px"> <?php echo $blog['username']?> </a>
 			<input type="hidden" name="userid" value="<?php echo $blog['id']; ?>"> 
 			<?php endforeach;}	?> <br>
+
 			<?php foreach ($comment as $comments): ?> 
-					<label> <?php echo $comments['username']?></label>
+				<div style="margin: 0px 10px 0px 30px;">
+
+					<label> <b><?php echo $comments['username']?></b></label>
 					<p> <?php  echo $comments['comment']?></p>
+					<hr>
+				</div>
 			<?php endforeach; ?>
 		 	 <textarea class="form-control textarea" name="comment" rows="3" cols="180"></textarea>
 		</div>

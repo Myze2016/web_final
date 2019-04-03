@@ -49,7 +49,7 @@
   <script src="<?php echo base_url('assets/js/test.js'); ?>"></script>
   <script> 
 
-s
+
    $(document).ready(function(){
      $('#userform').submit(function(e){
       e.preventDefault();
