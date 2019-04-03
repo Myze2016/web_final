@@ -15,13 +15,11 @@
       <img src="<?php echo base_url("assets/images/dota2logo.png") ?>" id="icon" alt="User Icon" />
     </div>
 
-<<<<<<< HEAD
+
    <form  action="<?php echo base_url('controller/login_user');?>" method="POST" class="form-group" id="loginform" >
     <form >
-=======
    <form  action="<?php echo base_url('controller/login_user');?>" method="POST" class="form-group">
 
->>>>>>> c14e3d08ff4a3f06783fb5c6d5f74bdaac8530cb
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="ENTER USERNAME">
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="ENTER PASSWORD">
       <input type="submit"  class="fadeIn fourth" value="Log In">

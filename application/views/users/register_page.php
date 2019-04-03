@@ -13,21 +13,21 @@
     <div class="fadeIn first">
       <img src="<?php echo base_url("assets/images/dota2logo.png") ?>" id="icon" alt="User Icon" />
     </div>
-<<<<<<< HEAD
+
   <p id="success-message"> </p>
    <form  action="<?php echo base_url('controller/register_user');?>" method="POST" id="userform" class="form-group">
    
       
       <input type="text" id="login" class="fadeIn second" name="username" placeholder="ENTER USERNAME">
       <p hidden id="user"></p>
-=======
+
 
    <form  action="<?php echo base_url('controller/register_user');?>" method="POST" class="form-group" id="rform">
    
       
       <input type="text" id="login" class="fadeIn second" name="username" placeholder="ENTER USERNAME">
       <input type="hidden" name="">
->>>>>>> c14e3d08ff4a3f06783fb5c6d5f74bdaac8530cb
+
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="ENTER EMAIL">
       <p hidden id="user"></p>
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="ENTER PASSWORD">
@@ -44,7 +44,7 @@
   </form>
   </div>
 </div>
-<<<<<<< HEAD
+
   <script src="<?php echo base_url('assets/js/jquery-3.3.1.min.js'); ?>"></script>
   <script >
    $(document).ready(function(){
@@ -77,7 +77,7 @@
 })
   </script>
 </body>
-=======
+
 </body>
 
 
@@ -110,4 +110,4 @@
     })
 })
 </script>
->>>>>>> c14e3d08ff4a3f06783fb5c6d5f74bdaac8530cb
+
