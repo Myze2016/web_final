@@ -18,6 +18,30 @@ class controller extends CI_Controller {
 		$this->load->view('users/contactpage');
 		$this->load->view('templates/footer');
 	}
+	public function add_contact(){
+		if (!(isset($_SESSION['user']))) {
+				header('Location:  '  . base_url('login'));
+			}
+		else {
+		$message = $this->input->get('message');
+		$this->load->database();
+		$this->load->model('user_model');
+		$data   =  array(
+				'message' => $message,
+				'user_id' => $_SESSION['id']
+			);
+		$result   = $this->user_model->save_contact($data);
+			header('Location:  '  . base_url('controller/contact'));
+		};
+	}
+
+
+
+
+
+
+
+
 	public function register()                  //login and comment uses Homepage Navbar
 	{
 
@@ -265,7 +289,7 @@ class controller extends CI_Controller {
 		$data  = array('users' => $this->user_model->view_all_message());
 		$this->load->view('templates/admin/header');
 		$this->load->view('templates/admin/nav.php');
-		$this->load->view('users/admin_page_message',$data);
+		$this->load->view('users/message_list',$data);
 		$this->load->view('templates/admin/footer');
 	}
 

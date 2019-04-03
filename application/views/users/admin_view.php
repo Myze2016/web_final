@@ -20,7 +20,7 @@
 		 			
  				</div>
  				<div class="col-md-5 ">
- 					<p class="article-title"> <?php echo $blog['Title'] ?> </p>
+ 					<h4><p class="article-title"> <?php echo $blog['Title'] ?> </p></h4>
  					<p class="article-text-first">
 		 				<?php 
 

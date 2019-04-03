@@ -1,20 +1,4 @@
-    <style type="text/css">
-    	.padding-top {
-    		padding-top: 100px;
-    	}
-		.icons {
-			text-align: center;
-		}
-		.copy {
-			display: inline;
-		}
-		.padding-a {
-			padding: 5px 5px;
-		}
 
-
-
-    </style>
 
 
 	<footer>
