@@ -18,7 +18,7 @@
    <form  action="<?php echo base_url('controller/register_user');?>" method="POST" id="userform" class="form-group">
    
       
-      <input type="text" id="login" class="fadeIn second" name="username" placeholder="ENTER USERNAME">
+
       <p hidden id="user"></p>
 
 
@@ -46,7 +46,10 @@
 </div>
 
   <script src="<?php echo base_url('assets/js/jquery-3.3.1.min.js'); ?>"></script>
-  <script >
+  <script src="<?php echo base_url('assets/js/test.js'); ?>"></script>
+  <script> 
+
+s
    $(document).ready(function(){
      $('#userform').submit(function(e){
       e.preventDefault();
@@ -56,7 +59,6 @@
         url : url,
         method: 'POST',
         data : $(this).serialize(),
-
         success: function(res){
            $('#success-message').text(res.message);
         },
@@ -76,38 +78,7 @@
 
 })
   </script>
+  
 </body>
 
-</body>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="<?php echo base_url('assets/js/jquery-3.3.1.min')?>"></script>
-<script >
- $(document).ready(function(){
-  $('#rform').submit(function(e){
-    e.preventDefault();
-    var url = $(this).attr('action');
-    
-    $.ajax({
-
-      url: url;
-      method: "POST";
-      data: $(this).serialize(),
-      success: function (res){
-        $('#success-message').text(res.message);
-      },
-      error: function(err){
-        var error = JSON.parse(err.responseText);
-
-        alert(err.responseText);
-      }
-
-
-
-
-
-    })
-})
-</script>
 
