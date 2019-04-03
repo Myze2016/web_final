@@ -1,50 +1,6 @@
 <style type="text/css">
   
-  html {
-     background-color: rgb(132,60,61);
-  }
-
-  .padding {
-     padding: 75px;
-  }
-    
-  .masthead {
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 295px;
-    background-size: cover;  
-    background-blend-mode: darken;
-    }
-    
-    .site-heading {
-    color: black;
-    font-family: 'Lato', sans-serif;
-    text-align: center;
-    padding: 100px 20px;
-
-  }
-    .post-title {
-        text-align: justify;
-    }
-    
-    .blog-list {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-       background: #b8b8b8;
-       color: white;
-    }
-    .img-blog {
-         
-      width: 100%;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-    .post-title {
-      font-size: 23px;
-    }
-    .post-subtitle {
-      font-size: 15px;
-    }
-      .post-subtitle-content {
-        font-size: 13px;
+ 
     }
 </style>
 <body>

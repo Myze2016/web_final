@@ -14,7 +14,7 @@
 			<input type="hidden" name="blogid" value="<?php echo $user['id']; ?>"> 
 	<div class="row postblog break" >
 	 	<div class="col-md-4">
-		   	<img src="<?php echo base_url("assets/images/blog/".$user['image']) ?>" width="90%" height="200px">
+		   	<img src="<?php echo base_url("assets/images/blog/".$user['image']) ?>" width="90%" height="auto">
 
 	 	</div>
 	 	
@@ -24,8 +24,13 @@
 	  		<h3 class=""><?php echo $user['Title'] ?></h3>
 	   		<p class=""><?php echo $user['words'] ?></p>
 	 	</div>
+<<<<<<< HEAD
 	 	<div class="form-group">
 		 	<label for="exampleFormControlTextarea3" style="padding-bottom: 10px;">comment: </label>
+=======
+		<div class="form-group">
+		 	<label for="exampleFormControlTextarea3">Comments:</label>
+>>>>>>> cb7bd114bf6da62c208f84040f63284799c1e52b
 		 	<?php if ((isset($_SESSION['user']))) {foreach ($blogs as $blog): ?> 
 			<a href="#" style="font-size: 20px"> <?php echo $blog['username']?> </a>
 			<input type="hidden" name="userid" value="<?php echo $blog['id']; ?>"> 

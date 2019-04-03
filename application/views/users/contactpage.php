@@ -1,44 +1,19 @@
-<style type="text/css">
-	.question {
-		padding-top: 50px;
-		color: white;
-		text-align: center;
-	}
-	.padding-all {
-		padding-top: 20px;
-	}
-	.padding-a {
-		padding: 20px 20px;
-		color: maroon;
-	}
-	ul {
-		list-style-type: none;
-		padding: 15px 15px;
-	}
-	.even-size {
-		width: 30%;
-	}
 
-	.border-g {
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	}
-</style>
  	<div class="row question">
  		<div class="col-md-12">
  			<h2>Ask us a Question!</h2>
  		</div>
  	</div>
- 	<form  action="<?php echo base_url('controller/add_contact');?>" method="GET" class="form-group">
+ 	<form  action="<?php echo base_url('controller/add_contact');?>" method="POST" class="form-group">
  	<div class="row">
  		<div class="col-md-12 padding-all">
  			
  			<textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="10" ></textarea>
  			
  		</div>
-
- 	</div>
-		<div class="col-2 float-right text-center padding-all">
-					<input type="submit" value="Send" class="button btn btn-primary"> 
+	 	</div>
+			<div class="col-2 float-right text-center padding-all">
+			<input type="submit" value="Send" class="button btn btn-primary"> 
 		</div>
 		
 	</div>
